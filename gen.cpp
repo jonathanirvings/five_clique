@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// vector<int> containing_letter3[26][26][26];
-
 int main() {
   vector<string> word_to_str(1 << 26);
   vector<vector<int>> words_with_hsb(26);
