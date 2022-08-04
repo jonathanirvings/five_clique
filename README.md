@@ -19,7 +19,7 @@ Instead of attempting this problem as a graph problem, we attempt this problem u
 First, for each 5-letter word without duplicate letters, we convert them to 25-bit integer.
 The i-th bit is active if and only if the i-th letter (e.g., ASCII code 97 + i) is present in the word.
 For any integer v, we define cnt(v) as the number of 1's in its binary representation.
-For any v (0 &le; v &le; 2^25) where cnt(v) is a multiple of 5, we define C(v) as the number of distinct set of cnt(v) / 5 words without using the same letter twice.
+For any v (0 &le; v &le; 2^25) where cnt(v) is a multiple of 5, we define C(v) as the number of distinct set of cnt(v) / 5 words without using the same letter twice, and letter i can be used if and only if the i-th bit of v is 1.
 By definition, cnt(0) = 1.
 
 For v > 0, we can compute cnt(v) recursively as follows:
