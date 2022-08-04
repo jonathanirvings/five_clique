@@ -56,7 +56,7 @@ int main() {
   }
 
   vector<int> words;
-  function<void(int)> dfs = [&] (int bit) {
+  function<void(int)> backtrack = [&] (int bit) {
     if (bit == 0) {
       for (int word : words) {
         printf("%s ", word_to_str[word].c_str());
@@ -66,7 +66,7 @@ int main() {
     }
     for (int word : can_use_word[bit]) {
       words.push_back(word);
-      dfs(bit ^ word);
+      backtrack(bit ^ word);
       words.pop_back();
     }
   };
@@ -76,7 +76,7 @@ int main() {
     total_possibilities += possibilities[((1 << 26) - 1) ^ (1 << i)];
   }
   for (int i = 0; i < 26; ++i) {
-    dfs(((1 << 26) - 1) ^ (1 << i));
+    backtrack(((1 << 26) - 1) ^ (1 << i));
   }
   printf("TOTAL NUMBER OF SETS (ANAGRAM EXCLUDED) = %d\n", total_possibilities);
 }

@@ -31,7 +31,7 @@ Suppose "abcde" and "fghij" are both words.
 When computing cnt(2^10 - 1), we will compute both {"abcde", "fghij"} and {"fghij", "abcde"}.
 The solution to remove the duplicates is by changing the recursion to the following optimization, which also saves runtime.
 
-cnt(v) = sum(cnt(v - w) | w is a word and w is a submask of v).
+cnt(v) = sum(cnt(v - w) | w is a word and w is a submask of v and hsb(w) = hsb(v)), where hsb(v) is the index of the highest significant bit in v, i.e. hsb(v) = floor(log2(v)).
 
 To actually construct the solution (instead of just counting them), for each v, we need to keep the list of words w which contributes to the value of cnt(v), and then uses backtrack.
 
@@ -41,7 +41,7 @@ There are several other optimizations being done to improve the runtime of the s
 
 ## Result
 
-Using a Macbook Air (M1, 2020), the solution was ran 10 times, with the runtime average of 3.1803 seconds and variance of 0.07848361.
+Using a Macbook Air (M1, 2020), the solution was ran 10 times, with the runtime average of 3.1803 seconds and variance of 0.07848361 seconds.
 The solution finds 538 sets of 5 words (anagram excluded) without using the same letter twice, which agrees with Matt's solution.
 
 
